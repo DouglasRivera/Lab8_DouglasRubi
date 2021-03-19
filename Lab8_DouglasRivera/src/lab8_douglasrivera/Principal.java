@@ -24,7 +24,7 @@ public class Principal extends javax.swing.JFrame {
     private PersonasDBA Perdba = new PersonasDBA();
     public Principal() {
         initComponents();
-        
+        personas = Perdba.obtenerTodos();
         
         
         JtablePersonas.setModel(new javax.swing.table.DefaultTableModel(
@@ -165,6 +165,11 @@ public class Principal extends javax.swing.JFrame {
         JtablePersonas = new javax.swing.JTable();
         jbModificar = new javax.swing.JButton();
         jbEliminar = new javax.swing.JButton();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextArea3 = new javax.swing.JTextArea();
+        jbBuscarLLave = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -173,10 +178,6 @@ public class Principal extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -402,6 +403,47 @@ public class Principal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("LISTAR", jPanel2);
 
+        jLabel14.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel14.setText("Buscar:");
+
+        jTextArea3.setColumns(20);
+        jTextArea3.setRows(5);
+        jScrollPane4.setViewportView(jTextArea3);
+
+        jbBuscarLLave.setText("BUSCAR");
+        jbBuscarLLave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuscarLLaveActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(287, 287, 287)
+                .addComponent(jLabel14)
+                .addGap(43, 43, 43)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jbBuscarLLave)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(210, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel14)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(62, 62, 62)
+                .addComponent(jbBuscarLLave)
+                .addContainerGap(231, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("BUSQUEDA DE CUALQUIER ATRIBUTO", jPanel5);
+
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
@@ -468,38 +510,6 @@ public class Principal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("BUSQUEDA POR TIPO", jPanel4);
 
-        jLabel14.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        jLabel14.setText("Buscar:");
-
-        jTextArea3.setColumns(20);
-        jTextArea3.setRows(5);
-        jScrollPane4.setViewportView(jTextArea3);
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(287, 287, 287)
-                .addComponent(jLabel14)
-                .addGap(34, 34, 34)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(409, Short.MAX_VALUE))
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(jLabel14))
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(541, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("BUSQUEDA DE CUALQUIER ATRIBUTO", jPanel5);
-
         jLabel1.setFont(new java.awt.Font("MV Boli", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 153, 153));
         jLabel1.setText("PERSONAS DE LA UNIVERSIDAD");
@@ -509,22 +519,22 @@ public class Principal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 981, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(190, 190, 190))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 981, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 702, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();
@@ -675,6 +685,10 @@ public class Principal extends javax.swing.JFrame {
             }
     }//GEN-LAST:event_jbEliminarActionPerformed
 
+    private void jbBuscarLLaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarLLaveActionPerformed
+        personas = Perdba.obtenerTodos();
+    }//GEN-LAST:event_jbBuscarLLaveActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -739,6 +753,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea3;
+    private javax.swing.JButton jbBuscarLLave;
     private javax.swing.JButton jbEliminar;
     private javax.swing.JButton jbGuardar;
     private javax.swing.JButton jbModificar;
